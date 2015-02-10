@@ -20,7 +20,7 @@ const int NB_TESTS = 24;
 const double TIME_LIMIT = 500;
 const char* time_limit = "500";
 
-const double REGRESSION_CELLS_RATIO = 1.1;
+const double REGRESSION_CELLS_RATIO = 1.2;
 const double REGRESSION_TIME_RATIO = 1.4;
 
 // Some parameters are chosen to be not configurable for the moment
@@ -141,13 +141,13 @@ int main (int argc, char** argv) {
 		case Optimizer::UNBOUNDED_OBJ :      cerr << "FAILED: unbounded objective"; break;
 		case Optimizer::TIME_OUT :           cerr << "FAILED: timeout"; break;
 		case Optimizer::SUCCESS : {
-			if (o.loup < lb)                   {  cerr.precision(20); cerr << "FAILED: upper bound (loup=" << o.loup << ") is wrong"; }
-			else if (o.uplo > ub)              {  cerr.precision(20); cerr << "FAILED: lower bound (uplo=" << o.uplo << ") is wrong"; }
+			if (o.loup < lb)                   {  cerr.precision(20); cerr << "FAILED: upper bound (loup=" << o.loup << ") is wrong (REF is "<<lb<<") "; }
+			else if (o.uplo > ub)              {  cerr.precision(20); cerr << "FAILED: lower bound (uplo=" << o.uplo << ") is wrong (REF is "<<ub<<") "; }
 			else if (o.time > REGRESSION_TIME_RATIO*time)
-			                                   {  cerr << "FAILED: time (" << o.time << "s) exceeds by more than 10% the reference time"; }
+			                                   {  cerr << "FAILED: time (" << o.time << "s) exceeds by more than 40% the reference time (REF is "<<time<<") "; }
 			else if (o.nb_cells> REGRESSION_CELLS_RATIO*nb_cells)
-			                                   {  cerr << "FAILED: number of cells (" << o.nb_cells << ") exceeds by more than 10% the reference value"; }
-			else                               {  ok=true; cout << "SUCCESS (time=" << o.time << " nb cells=" << o.nb_cells << ")"; }
+			                                   {  cerr << "FAILED: number of cells (" << o.nb_cells << ") exceeds by more than 20% the reference value  (REF is "<< nb_cells<<") "; }
+			else                               {  ok=true; cout << "SUCCESS (time=" << o.time << " nb cells=" << o.nb_cells << ") (REF time=" << time << " nb cells=" << nb_cells << ")"; }
 		}
       }
 
