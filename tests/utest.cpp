@@ -17,6 +17,7 @@
 #include "TestString.h"
 #include "TestBitSet.h"
 #include "TestSymbolMap.h"
+#include "TestCellHeap.h"
 #include "TestPixelMap.h"
 
 // ================ arithmetic ===============
@@ -68,6 +69,7 @@
 
 
 
+
 // ================ strategy ===============
 #include "TestOptimizer.h"
 
@@ -90,6 +92,7 @@ int main() {
     ts.add(auto_ptr<Test::Suite>(new TestString()));
     ts.add(auto_ptr<Test::Suite>(new TestBitSet()));
     ts.add(auto_ptr<Test::Suite>(new TestSymbolMap()));
+    ts.add(auto_ptr<Test::Suite>(new TestCellHeap()));
     ts.add(auto_ptr<Test::Suite>(new TestPixelMap()));
 
     ts.add(auto_ptr<Test::Suite>(new TestInterval()));
@@ -133,6 +136,7 @@ int main() {
     ts.add(auto_ptr<Test::Suite>(new TestCtcPixelMap()));
 
     ts.add(auto_ptr<Test::Suite>(new TestFritzJohn()));
+
 
     ts.add(auto_ptr<Test::Suite>(new TestOptimizer()));
     ts.add(auto_ptr<Test::Suite>(new TestSeparator()));
