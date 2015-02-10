@@ -22,8 +22,9 @@
 #include "ibex_EntailedCtr.h"
 #include "ibex_LinearSolver.h"
 #include "ibex_PdcHansenFeasibility.h"
-#include "ibex_Cell.h"
+#include "ibex_LinearRelaxCombo.h"
 #include "ibex_Random.h"
+#include "ibex_Cell.h"
 
 namespace ibex {
 
@@ -556,6 +557,7 @@ private:
 
 	/** linear solver used in ibex_OptimSimplex.cpp_ */
 	LinearSolver *mylp;
+	LinearRelaxCombo *lr;
 
 	/** Inner contractor (for the negation of g) */
 	CtcUnion* is_inside;
